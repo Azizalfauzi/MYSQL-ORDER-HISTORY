@@ -19,5 +19,20 @@ CREATE TABLE orders(
     service_charge BIGINT NOT NULL,
     total_amount BIGINT NOT NULL
 ) Engine InnoDb;
-
-SELECT * FROM orders;
+----
+SELECT *
+FROM orders;
+----
+CREATE TABLE order_details(
+    id VARCHAR(100) PRIMARY KEY,
+    order_id VARCHAR(100) NOT NULL,
+    product_id VARCHAR(100) NOT NULL,
+    product_name VARCHAR(100) NOT NULL,
+    product_weight INT NOT NULL,
+    product_price BIGINT NOT NULL,
+    quantity INT NOT NULL,
+    total_amount BIGINT NOT NULL,
+    FOREIGN KEY fk_orders_to_order_details (order_id) REFERENCES orders(id)
+) Engine InnoDb;
+---
+SELECT * FROM order_details;
