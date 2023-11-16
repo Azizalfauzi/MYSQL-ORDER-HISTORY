@@ -172,3 +172,23 @@ VALUES(
         1,
         43900
     );
+---
+SELECT *
+FROM order_details;
+--- 2 QUERY
+SELECT *
+FROM orders
+WHERE id = '122';
+---
+SELECT *
+FROM order_details
+WHERE order_id = '122';
+-- 1 Query
+SELECT *
+FROM orders as o
+    JOIN order_details as od ON o.id = od.order_id
+WHERE o.id = '122';
+---
+SELECT *
+FROM orders
+WHERE total_amount > 500000;
